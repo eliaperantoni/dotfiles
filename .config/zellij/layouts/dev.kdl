@@ -1,0 +1,15 @@
+layout {
+	split_direction "vertical"
+	pane {
+		command "yazi"
+	}
+	pane split_direction="vertical" {
+		pane {
+			command "hx"
+			args "."
+		}
+		pane {
+			
+		}
+	}
+}
