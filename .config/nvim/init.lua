@@ -43,9 +43,6 @@ vim.o.confirm = true
 -- Clear highlights on search when pressing <Esc> in normal mode
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- Exit terminal mode
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-
 -- Show diagnostics as virtual text, open float automatically when navigating with [d and ]d
 vim.diagnostic.config({
 	update_in_insert = false,
@@ -354,8 +351,8 @@ do
 	vim.pack.add({ gh("swaits/zellij-nav.nvim") })
 	require("zellij-nav").setup()
 
-	vim.keymap.set("n", "<C-h>", "<cmd>ZellijNavigateLeftTab<cr>", { desc = "Navigate left (or tab)" })
-	vim.keymap.set("n", "<C-j>", "<cmd>ZellijNavigateDown<cr>", { desc = "Navigate down" })
-	vim.keymap.set("n", "<C-k>", "<cmd>ZellijNavigateUp<cr>", { desc = "Navigate up" })
-	vim.keymap.set("n", "<C-l>", "<cmd>ZellijNavigateRightTab<cr>", { desc = "Navigate right (or tab)" })
+	vim.keymap.set({"n", "t"}, "<C-h>", "<cmd>ZellijNavigateLeftTab<cr>", { desc = "Navigate left (or tab)" })
+	vim.keymap.set({"n", "t"}, "<C-j>", "<cmd>ZellijNavigateDown<cr>", { desc = "Navigate down" })
+	vim.keymap.set({"n", "t"}, "<C-k>", "<cmd>ZellijNavigateUp<cr>", { desc = "Navigate up" })
+	vim.keymap.set({"n", "t"}, "<C-l>", "<cmd>ZellijNavigateRightTab<cr>", { desc = "Navigate right (or tab)" })
 end
