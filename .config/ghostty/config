@@ -1,6 +1,6 @@
 command = /opt/homebrew/bin/fish
 font-family = "IosevkaTerm Nerd Font Mono"
 font-style = "Medium"
-font-size = 14
+font-size = 15
 theme=TokyoNight
 macos-option-as-alt = "left"
