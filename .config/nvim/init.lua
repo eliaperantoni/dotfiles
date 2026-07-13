@@ -327,7 +327,15 @@ end
 -- Git signs
 do
 	vim.pack.add({ gh("lewis6991/gitsigns.nvim") })
-	require("gitsigns").setup({})
+	require("gitsigns").setup({
+		signs = {
+			add = { text = "+" },
+			change = { text = "~" },
+			delete = { text = "_" },
+			topdelete = { text = "‾" },
+			changedelete = { text = "~" },
+		},
+	})
 	vim.keymap.set("n", "<leader>h", function()
 		require("gitsigns").preview_hunk_inline()
 	end, { desc = "Preview hunk inline" })
@@ -351,8 +359,8 @@ do
 	vim.pack.add({ gh("swaits/zellij-nav.nvim") })
 	require("zellij-nav").setup()
 
-	vim.keymap.set({"n", "t"}, "<C-h>", "<cmd>ZellijNavigateLeftTab<cr>", { desc = "Navigate left (or tab)" })
-	vim.keymap.set({"n", "t"}, "<C-j>", "<cmd>ZellijNavigateDown<cr>", { desc = "Navigate down" })
-	vim.keymap.set({"n", "t"}, "<C-k>", "<cmd>ZellijNavigateUp<cr>", { desc = "Navigate up" })
-	vim.keymap.set({"n", "t"}, "<C-l>", "<cmd>ZellijNavigateRightTab<cr>", { desc = "Navigate right (or tab)" })
+	vim.keymap.set({ "n", "t" }, "<C-h>", "<cmd>ZellijNavigateLeftTab<cr>", { desc = "Navigate left (or tab)" })
+	vim.keymap.set({ "n", "t" }, "<C-j>", "<cmd>ZellijNavigateDown<cr>", { desc = "Navigate down" })
+	vim.keymap.set({ "n", "t" }, "<C-k>", "<cmd>ZellijNavigateUp<cr>", { desc = "Navigate up" })
+	vim.keymap.set({ "n", "t" }, "<C-l>", "<cmd>ZellijNavigateRightTab<cr>", { desc = "Navigate right (or tab)" })
 end
