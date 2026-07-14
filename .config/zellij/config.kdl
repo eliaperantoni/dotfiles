@@ -178,6 +178,16 @@ keybinds clear-defaults=true {
         // bind "Alt Shift p" { ToggleGroupMarking; }
         bind "Alt f" { ToggleFloatingPanes; SwitchToMode "locked"; }
         bind "Ctrl f" { ToggleFocusFullscreen; TogglePaneFrames; SwitchToMode "locked"; }
+        bind "Alt s" {
+            Run "fish" "-lc" "z" {
+                floating true
+                close_on_exit true
+                width "20%"
+                height "20%"
+                name "session switcher"
+            }
+            SwitchToMode "locked"
+        }
 
         bind "Ctrl h" {
             MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
