@@ -164,6 +164,19 @@ do
 	vim.keymap.set("n", "<leader>u", Snacks.picker.lsp_references)
 end
 
+-- Find and replace
+do
+	vim.pack.add({ gh("MagicDuck/grug-far.nvim") })
+	require("grug-far").setup({})
+
+	vim.keymap.set({ "n", "x" }, "<leader>R", function()
+		require("grug-far").open({
+			transient = true,
+			visualSelectionUsage = "auto-detect",
+		})
+	end, { desc = "Find and replace" })
+end
+
 -- Jumplist
 do
 	vim.keymap.set("n", "<leader>j", Snacks.picker.jumps)
@@ -285,6 +298,11 @@ do
 	require("copilot").setup({
 		suggestion = { enabled = false },
 		panel = { enabled = false },
+		filetypes = {
+			["grug-far"] = false,
+			["grug-far-history"] = false,
+			["grug-far-help"] = false,
+		},
 	})
 
 	require("blink.cmp").setup({
