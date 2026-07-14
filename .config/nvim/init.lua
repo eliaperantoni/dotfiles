@@ -344,6 +344,7 @@ do
 	})
 	vim.g.loaded_netrwPlugin = 1
 	vim.keymap.set("n", "<leader>y", "<Cmd>Yazi cwd<Cr>")
+	vim.keymap.set("n", "<leader>Y", "<Cmd>Yazi<Cr>")
 end
 
 -- Text objects
