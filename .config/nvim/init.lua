@@ -162,6 +162,7 @@ do
 	vim.keymap.set("n", "<leader>d", Snacks.picker.lsp_definitions)
 	vim.keymap.set("n", "<leader>i", Snacks.picker.lsp_implementations)
 	vim.keymap.set("n", "<leader>u", Snacks.picker.lsp_references)
+	vim.keymap.set("n", "<leader><leader>", Snacks.picker.resume)
 end
 
 -- Find and replace
