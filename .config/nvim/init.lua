@@ -97,16 +97,42 @@ require("mini.icons").setup()
 MiniIcons.mock_nvim_web_devicons()
 
 -- Statusline
-vim.o.showcmd = true
-vim.o.showcmdloc = "statusline"
-vim.pack.add({ gh("nvim-lualine/lualine.nvim") })
-require("lualine").setup({
-	options = { section_separators = "", component_separators = "" },
-	sections = {
-		lualine_c = { { "filename", path = 1 } },
-		lualine_x = { "%S" },
-	},
-})
+do
+	vim.o.showcmd = true
+	vim.o.showcmdloc = "statusline"
+	vim.pack.add({ gh("nvim-lualine/lualine.nvim") })
+	local function macro_recording()
+		local register = vim.fn.reg_recording()
+
+		if register == "" then
+			return ""
+		end
+
+		return "Recording " .. register
+	end
+	require("lualine").setup({
+		options = { section_separators = "", component_separators = "" },
+		sections = {
+			lualine_c = { { "filename", path = 1 } },
+			lualine_x = { macro_recording, "%S" },
+		},
+	})
+	vim.api.nvim_create_autocmd({
+		"RecordingEnter",
+		"RecordingLeave",
+	}, {
+		group = vim.api.nvim_create_augroup("lualine-macro", { clear = true }),
+		callback = function()
+			vim.schedule(function()
+				require("lualine").refresh({
+					scope = "all",
+					place = { "statusline" },
+					force = true,
+				})
+			end)
+		end,
+	})
+end
 
 -- s for flash
 vim.pack.add({ gh("folke/flash.nvim") })
