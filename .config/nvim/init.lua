@@ -128,10 +128,35 @@ require("snacks").setup({
 
 -- Pickers
 do
+	local function diagnostics()
+		local current_buf = vim.api.nvim_get_current_buf()
+
+		Snacks.picker({
+			title = "Diagnostics",
+			multi = {
+				"diagnostics_buffer",
+				{
+					source = "diagnostics",
+					filter = {
+						cwd = true,
+						filter = function(item)
+							return item.buf ~= current_buf
+						end,
+					},
+				},
+			},
+			matcher = { sort_empty = true },
+			sort = {
+				fields = { "source_id", "score:desc", "severity", "file", "lnum" },
+			},
+		})
+	end
+
 	vim.keymap.set("n", "<leader>f", Snacks.picker.smart)
 	vim.keymap.set("n", "<leader>b", Snacks.picker.buffers)
 	vim.keymap.set("n", "<leader>/", Snacks.picker.lines)
 	vim.keymap.set("n", "<leader>?", Snacks.picker.grep)
+	vim.keymap.set("n", "<leader>!", diagnostics)
 	vim.keymap.set("n", "<leader>s", Snacks.picker.lsp_symbols)
 	vim.keymap.set("n", "<leader>S", Snacks.picker.lsp_workspace_symbols)
 	vim.keymap.set("n", "<leader>d", Snacks.picker.lsp_definitions)
@@ -275,8 +300,14 @@ do
 				copilot = {
 					name = "copilot",
 					module = "blink-copilot",
-					score_offset = 100,
 					async = true,
+
+					-- Do not let late Copilot results outrank normal completions.
+					score_offset = -10,
+
+					opts = {
+						max_completions = 1,
+					},
 				},
 			},
 		},
