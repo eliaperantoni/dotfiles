@@ -43,6 +43,9 @@ vim.o.confirm = true
 -- Clear highlights on search when pressing <Esc> in normal mode
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+-- Yank to system clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to clipboard" })
+
 -- Show diagnostics as virtual text, open float automatically when navigating with [d and ]d
 vim.diagnostic.config({
 	update_in_insert = false,
@@ -368,8 +371,8 @@ do
 		open_for_directories = true,
 	})
 	vim.g.loaded_netrwPlugin = 1
-	vim.keymap.set("n", "<leader>y", "<Cmd>Yazi cwd<Cr>")
-	vim.keymap.set("n", "<leader>Y", "<Cmd>Yazi<Cr>")
+	vim.keymap.set("n", "<leader>e", "<Cmd>Yazi cwd<Cr>")
+	vim.keymap.set("n", "<leader>E", "<Cmd>Yazi<Cr>")
 end
 
 -- Text objects

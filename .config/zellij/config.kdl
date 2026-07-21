@@ -176,9 +176,9 @@ keybinds clear-defaults=true {
         // bind "Alt o" { MoveTab "right"; }
         // bind "Alt p" { TogglePaneInGroup; }
         // bind "Alt Shift p" { ToggleGroupMarking; }
-        bind "Alt f" { ToggleFloatingPanes; SwitchToMode "locked"; }
+        bind "Ctrl p" { ToggleFloatingPanes; SwitchToMode "locked"; }
         bind "Ctrl f" { ToggleFocusFullscreen; TogglePaneFrames; SwitchToMode "locked"; }
-        bind "Alt s" {
+        bind "Ctrl s" {
             Run "fish" "-lc" "z" {
                 floating true
                 close_on_exit true
