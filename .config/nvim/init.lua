@@ -188,8 +188,11 @@ do
 	vim.keymap.set("n", "<leader>s", Snacks.picker.lsp_symbols)
 	vim.keymap.set("n", "<leader>S", Snacks.picker.lsp_workspace_symbols)
 	vim.keymap.set("n", "<leader>d", Snacks.picker.lsp_definitions)
+	vim.keymap.set("n", "<leader>D", Snacks.picker.lsp_type_definitions)
 	vim.keymap.set("n", "<leader>i", Snacks.picker.lsp_implementations)
 	vim.keymap.set("n", "<leader>u", Snacks.picker.lsp_references)
+	vim.keymap.set("n", "<leader>l", Snacks.picker.lsp_incoming_calls)
+	vim.keymap.set("n", "<leader>L", Snacks.picker.lsp_outgoing_calls)
 	vim.keymap.set("n", "<leader><leader>", Snacks.picker.resume)
 end
 
