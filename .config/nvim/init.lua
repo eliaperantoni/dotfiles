@@ -446,14 +446,3 @@ do
 	end, { desc = "Previous hunk" })
 end
 
--- Zellij navigation: move between windows, falling through to zellij panes
--- at the edges of the editor
-do
-	vim.pack.add({ gh("swaits/zellij-nav.nvim") })
-	require("zellij-nav").setup()
-
-	vim.keymap.set({ "n", "t" }, "<C-h>", "<cmd>ZellijNavigateLeftTab<cr>", { desc = "Navigate left (or tab)" })
-	vim.keymap.set({ "n", "t" }, "<C-j>", "<cmd>ZellijNavigateDown<cr>", { desc = "Navigate down" })
-	vim.keymap.set({ "n", "t" }, "<C-k>", "<cmd>ZellijNavigateUp<cr>", { desc = "Navigate up" })
-	vim.keymap.set({ "n", "t" }, "<C-l>", "<cmd>ZellijNavigateRightTab<cr>", { desc = "Navigate right (or tab)" })
-end
