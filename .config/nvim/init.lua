@@ -45,6 +45,7 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to clipboard" })
+vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
 -- Show diagnostics as virtual text, open float automatically when navigating with [d and ]d
 vim.diagnostic.config({
@@ -445,4 +446,3 @@ do
 		require("gitsigns").nav_hunk("prev")
 	end, { desc = "Previous hunk" })
 end
-
